@@ -27,7 +27,7 @@ class _FollowersScreenState extends State<FollowersScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -76,9 +76,9 @@ class _FollowersScreenState extends State<FollowersScreen> {
   }
 }
 
-
 class _FollowerCard extends StatelessWidget {
-  const _FollowerCard({required this.following, super.key});
+  const _FollowerCard({required this.following});
+
   final Following following;
 
   @override
@@ -109,7 +109,7 @@ class _FollowerCard extends StatelessWidget {
             children: [
               Text(
                 following.login,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                style: TextStyles.bold20,
               ),
               Text(
                 following.id.toString(),

@@ -11,11 +11,15 @@ class GitHubApiService {
   final Dio dio;
 
   Future<User?> getUser(String name) async {
-    final Response response = await dio.get('$baseUrl$name');
-    if (response.statusCode == 200) {
-      return User.fromJson(response.data);
+    try{
+      final Response response = await dio.get('$baseUrl$name');
+      if (response.statusCode == 200) {
+        return User.fromJson(response.data);
+      }
+      return null;
+    }catch(e){
+      return null;
     }
-    return null;
   }
 
   Future<List<Following>?> getFollowing(String name) async {

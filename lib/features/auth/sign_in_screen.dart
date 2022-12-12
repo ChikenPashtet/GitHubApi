@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:onboarding/onboarding.dart';
 import 'package:test_app/core/router/routes.dart';
+import 'package:test_app/core/static/colors.dart';
+import 'package:test_app/core/static/style.dart';
 import 'package:test_app/features/auth/cubit/auth_cubit.dart';
 
 class SingInScreen extends StatefulWidget {
@@ -23,15 +25,16 @@ class _SingInScreenState extends State<SingInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFCFCFC),
+      backgroundColor: LibraryColors.backGround,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0,
-        leading: const Icon(
-          Icons.arrow_back,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
           color: Colors.black,
+          onPressed: () { Navigator.pop(context); },
         ),
-        backgroundColor: const Color(0xFFFCFCFC),
+        backgroundColor: LibraryColors.backGround,
         toolbarHeight: 48,
       ),
       body: Column(
@@ -41,22 +44,14 @@ class _SingInScreenState extends State<SingInScreen> {
             padding: EdgeInsets.only(left: 16),
             child: Text(
               'GitHub social',
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 34,
-              ),
+              style: TextStyles.bold34,
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 16),
-            child: Text(
-              'Enter nickname on github',
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 17,
-                color: Color(0xFF7A7A7A),
-              ),
-            ),
+          Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: Text('Enter nickname on github',
+                style: TextStyles.medium17
+                    .copyWith(color: LibraryColors.unactiveText)),
           ),
           const SizedBox(height: 46),
           Padding(
@@ -75,11 +70,11 @@ class _SingInScreenState extends State<SingInScreen> {
                 isDense: true,
                 labelText: 'Nickname',
                 labelStyle: TextStyle(
-                  color: Color(0xFFAEAEB2),
+                  color: LibraryColors.label,
                 ),
                 hintText: 'Enter nickname',
                 hintStyle: TextStyle(
-                    color: Color(0xFFB0B0B0),
+                    color: LibraryColors.hint,
                     fontSize: 36,
                     fontWeight: FontWeight.w500),
                 filled: true,
@@ -91,33 +86,28 @@ class _SingInScreenState extends State<SingInScreen> {
             builder: (context, state) {
               if (state is AuthError) {
                 return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const SizedBox(height: 40),
-                    SvgPicture.asset(
-                      'assets/images/fourth.svg',
+                    Center(
+                      child: Image.asset(
+                        'assets/images/fifth.png',
+                      ),
                     ),
                     Container(
                       padding: const EdgeInsets.only(top: 17),
                       child: const Text(
                         'User with this nickname',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xFFE73A40),
-                            fontSize: 24),
+                        style: TextStyles.medium24,
                       ),
                     ),
                     const Text(
                       'not found!',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Color(0xFFE73A40),
-                          fontSize: 24),
+                      style: TextStyles.medium24,
                     ),
-                    const Spacer(),
                   ],
                 );
               }
-
               return const Spacer();
             },
             listener: (context, state) {
@@ -129,6 +119,7 @@ class _SingInScreenState extends State<SingInScreen> {
               }
             },
           ),
+          const Spacer(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: ElevatedButton(
@@ -146,21 +137,52 @@ class _SingInScreenState extends State<SingInScreen> {
               child: const Center(
                 child: Text(
                   'Search',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 17,
-                    color: Color(0xFFF6F7FA),
-                  ),
+                  style: TextStyles.bold17,
                 ),
               ),
             ),
           ),
           const SizedBox(height: 25),
-          //TODO: сделать
-          const Center(
-            child: Text('By signing in, I agree with Terms of Use'),
+          Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text('By signing in, I agree with ',
+                    style: TextStyle(
+                        color: LibraryColors.hint,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 13)),
+                const Text(
+                  'Terms of Use',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 13),
+                )
+              ],
+            ),
           ),
-          const SizedBox(height: 65),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('and ',
+                      style: TextStyle(
+                          color: LibraryColors.hint,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 13)),
+                  const Text('Privacy Policy',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 13)),
+                ],
+              ),
+            ),
+          ),
+          //const SizedBox(height: 65),
         ],
       ),
     );

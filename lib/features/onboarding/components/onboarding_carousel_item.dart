@@ -27,9 +27,9 @@ class OnboardingCarouselItem extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Container(child: Image.asset(image), height: 400,),
+              child: Container(height: 400,child: Image.asset(image),),
             ),
-            SizedBox(height: 20)
+            const SizedBox(height: 20)
           ],
         ),
         Padding(

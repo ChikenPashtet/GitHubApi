@@ -102,7 +102,7 @@ class _RepositoryCard extends StatelessWidget {
               height: 100,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                color: Color(0xFFF7DF1E),
+                color: const Color(0xFFF7DF1E),
               ),
               child: Padding(
                 padding: const EdgeInsets.only(right: 15, top: 30, bottom: 10),
@@ -114,27 +114,28 @@ class _RepositoryCard extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(width: 8),
+            const SizedBox(width: 8),
             Container(
               width: 49,
               height: 25,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(7),
-                  color: Color(0xFFE5E5EA)),
+                  color: const Color(0xFFE5E5EA)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.star,
                     color: Color(0xFFFFCB55),
                     size: 15,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 2.5,
                   ),
                   Text(
                     repository.stargazersCount.toString(),
-                    style: TextStyles.bold10.copyWith(color: Color(0xFFFFCB55)),
+                    style: TextStyles.bold10
+                        .copyWith(color: const Color(0xFFFFCB55)),
                   )
                 ],
               ),
@@ -146,14 +147,14 @@ class _RepositoryCard extends StatelessWidget {
           children: [
             Container(
               width: 90,
-              padding: EdgeInsets.all(1),
+              padding: const EdgeInsets.all(1),
               child: Text(
                 repository.name,
                 style: TextStyles.medium17,
                 overflow: TextOverflow.ellipsis,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 16,
             ),
             Container(
@@ -161,21 +162,22 @@ class _RepositoryCard extends StatelessWidget {
               height: 25,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(7),
-                  color: Color(0xFF2B2B2B)),
+                  color: const Color(0xFF2B2B2B)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.account_tree_rounded,
                     color: Color(0xFFFFFFFF),
                     size: 15,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 2.5,
                   ),
                   Text(
                     repository.forks.toString(),
-                    style: TextStyles.bold10.copyWith(color: Color(0xFFFFFFFF)),
+                    style: TextStyles.bold10
+                        .copyWith(color: const Color(0xFFFFFFFF)),
                   )
                 ],
               ),

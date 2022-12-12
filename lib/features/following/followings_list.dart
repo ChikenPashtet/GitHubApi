@@ -32,7 +32,7 @@ class _FollowingListState extends State<FollowingList> {
           padding: EdgeInsets.only(left: 16),
           child: Text(
             'Following you',
-            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 34),
+            style: TextStyles.bold34,
           ),
         ),
         const SizedBox(height: 18),
@@ -41,7 +41,6 @@ class _FollowingListState extends State<FollowingList> {
             if (state is! FollowingLoaded) {
               return const SizedBox.shrink();
             }
-
             return SizedBox(
               height: 167,
               child: ListView.separated(

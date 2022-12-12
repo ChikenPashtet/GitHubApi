@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_app/core/di/di_container.dart';
+import 'package:test_app/core/static/colors.dart';
 import 'package:test_app/features/auth/cubit/auth_cubit.dart';
 import 'package:test_app/features/followers/cubit/followers_cubit.dart';
 import 'package:test_app/features/followers/followers_screen.dart';
@@ -149,19 +150,19 @@ class _BioInfo extends StatelessWidget {
               Text(
                 'Company - ${user.company}',
                 style: TextStyles.medium17.copyWith(
-                  color: const Color(0xFFB0B0B0),
+                  color: LibraryColors.hint,
                 ),
               ),
               Text(
                 'Email - ${user.email}',
                 style: TextStyles.medium17.copyWith(
-                  color: const Color(0xFFB0B0B0),
+                  color: LibraryColors.hint,
                 ),
               ),
               Text(
                 'Bio - ${user.bio}',
                 style: TextStyles.medium17.copyWith(
-                  color: const Color(0xFFB0B0B0),
+                  color: LibraryColors.hint,
                 ),
               ),
             ],
@@ -184,41 +185,26 @@ class _BottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      selectedLabelStyle: const TextStyle(color: Colors.black),
+      fixedColor: Colors.black,
+      unselectedItemColor: LibraryColors.label,
+      unselectedLabelStyle: const TextStyle(color: LibraryColors.label),
       showUnselectedLabels: true,
-      unselectedLabelStyle: const TextStyle(color: Color(0xFFAEAEB2)),
       items: const [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home_filled, color: Color(0xFFAEAEB2)),
+          icon: Icon(Icons.home_filled),
           label: 'Home',
-          activeIcon: Icon(
-            Icons.home_filled,
-            color: Color(0xFF2B2B2B),
-          ),
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.people, color: Color(0xFFAEAEB2)),
+          icon: Icon(Icons.people),
           label: 'Followers',
-          activeIcon: Icon(
-            Icons.people,
-            color: Color(0xFF2B2B2B),
-          ),
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.telegram, color: Color(0xFFAEAEB2)),
+          icon: Icon(Icons.telegram),
           label: 'Chat',
-          activeIcon: Icon(
-            Icons.telegram,
-            color: Color(0xFF2B2B2B),
-          ),
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.person, color: Color(0xFFAEAEB2)),
+          icon: Icon(Icons.person),
           label: 'Profile',
-          activeIcon: Icon(
-            Icons.person,
-            color: Color(0xFF2B2B2B),
-          ),
         )
       ],
       currentIndex: currentPage,

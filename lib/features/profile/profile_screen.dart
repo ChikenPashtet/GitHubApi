@@ -33,19 +33,17 @@ class _Profile extends State<Profile> {
                 children: [
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        shape: CircleBorder(side: BorderSide(width: 0)),
-                        backgroundColor: Color(0xFFF0F0F0),
+                        shape: const CircleBorder(side: BorderSide(width: 0)),
+                        backgroundColor: const Color(0xFFF0F0F0),
                       ),
                       onPressed: () {},
                       child:
                           const Icon(Icons.settings, color: Color(0xFF202020))),
-                  SizedBox(
-                    width: 254,
-                  ),
+                  const Spacer(),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           shape: const CircleBorder(side: BorderSide(width: 0)),
-                          backgroundColor: Color(0xFFF0F0F0)),
+                          backgroundColor: const Color(0xFFF0F0F0)),
                       onPressed: () {},
                       child: const Icon(
                         Icons.notifications,
@@ -56,13 +54,12 @@ class _Profile extends State<Profile> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(165),
                 child: Image.network(
-                  //'https://www.befunky.com/images/prismic/0cd24dfa-814b-49cb-9205-f1652f492acb_features-photo-enhancer.png?auto=avif,webp&format=jpg&width=420',
                   user.avatarUrl,
                   width: 165,
                   height: 165,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Text(
@@ -70,28 +67,71 @@ class _Profile extends State<Profile> {
                 style: TextStyles.bold34,
               ),
               Text(
-                //'123456',
                 user.id.toString(),
-                style: TextStyles.medium17.copyWith(color: Color(0xFFA1A1A2)),
+                style: TextStyles.medium17
+                    .copyWith(color: const Color(0xFFA1A1A2)),
               ),
               Expanded(
                 child: ListView(
                   scrollDirection: Axis.vertical,
                   children: [
-                    _ProfileCard('My following', Icons.heart_broken),
-                    SizedBox(
+                    const _ProfileCard('My following',
+                        Icon(Icons.favorite, color: Colors.red)),
+                    const SizedBox(
                       height: 18,
                     ),
-                    _ProfileCard('My followers', Icons.heart_broken),
-                    SizedBox(
+                    const _ProfileCard('My followers',
+                        Icon(Icons.favorite, color: Colors.red)),
+                    const SizedBox(
                       height: 18,
                     ),
-                    _ProfileCard('My badges', Icons.sports_golf),
-                    SizedBox(
+                    const _ProfileCard(
+                        'My badges',
+                        Icon(
+                          Icons.badge,
+                          color: Colors.amberAccent,
+                        )),
+                    const SizedBox(
                       height: 18,
                     ),
-                    _ProfileCard('My organizatios', Icons.money)
+                    const _ProfileCard(
+                        'My organizatios',
+                        Icon(
+                          Icons.money,
+                          color: Colors.green,
+                        ))
                   ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    fixedSize: const Size(double.infinity, 58),
+                    backgroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('View all',
+                            style: TextStyles.medium17
+                                .copyWith(color: Colors.white)),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        const Icon(
+                          Icons.arrow_forward,
+                          color: Colors.white,
+                          size: 15,
+                        )
+                      ],
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -103,10 +143,10 @@ class _Profile extends State<Profile> {
 }
 
 class _ProfileCard extends StatelessWidget {
-  const _ProfileCard(this.str, this.icon, {super.key});
+  const _ProfileCard(this.str, this.icon);
 
   final String str;
-  final IconData icon;
+  final Icon icon;
 
   @override
   Widget build(BuildContext context) {
@@ -122,9 +162,9 @@ class _ProfileCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          SizedBox(width: 30),
-          Icon(icon),
-          SizedBox(
+          const SizedBox(width: 30),
+          icon,
+          const SizedBox(
             width: 10,
           ),
           Text(
